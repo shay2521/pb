@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+<h1>Search Phones</h1>
+
+<form action="" method="post">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        {{ form.search(class='form-control', placeholder= 'Search Phones Here') }} 
+        {{ form.submit(class='btn btn-primary w-100')}}
+    </div>
+</form>
+
+<hr>
+
+<div class="row">
+
+    {% for p in phones %}
+    <div class="col-12 col-md-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ p.first_name }} {{p.last_name }}</h5>
+                <p class="card-text">{{p.phone_number }}</p>
+                <p class="card-text">{{p.city}}</p>
+                <a href="#" class="btn btn-success">More Info</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{%endblock content%}
